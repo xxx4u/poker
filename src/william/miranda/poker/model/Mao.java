@@ -33,7 +33,7 @@ public class Mao
 	//Compara diversas maos e retorna a melhor, ou um conjunto caso tenha empate
 	public static List<Mao> comparar(ArrayList<Mao> m)
 	{
-		List<Mao> melhorMao = new ArrayList<>();
+		List<Mao> melhorMao = new ArrayList<Mao>();
 		
 		for (int i=0 ; i<m.size() ; i++)
 		{
@@ -62,7 +62,7 @@ public class Mao
 	//Compara duas maos e retorna a melhor... quando menor o ordinal do enum, melhor eh a Mao
 	public static List<Mao> comparar(Mao m1, Mao m2)
 	{
-		List<Mao> ret = new ArrayList<>();
+		List<Mao> ret = new ArrayList<Mao>();
 		
 		if (m1.getTipoMao().ordinal() < m2.getTipoMao().ordinal())//se m1 eh melhor
 		{

@@ -1,6 +1,7 @@
 package william.miranda.poker.activities;
 
 import william.miranda.poker.R;
+import william.miranda.poker.model.ClasseTeste;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,6 +12,8 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_activity);
+		
+		ClasseTeste.testarDesempateMaos();
 	}
 
 	@Override

@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import sun.net.www.http.Hurryable;
-
 import william.miranda.poker.model.Carta.Naipe;
 import william.miranda.poker.model.Mao.TipoMao;
 
@@ -402,7 +400,7 @@ public class Poker
 	{
 		Naipe naipe = cartas.get(0).getNaipe();
 		
-		List<Carta> highCard = new ArrayList<>();		
+		List<Carta> highCard = new ArrayList<Carta>();		
 		highCard.add(cartas.get(0));
 		
 		//verifica se sao do mesmo naipe

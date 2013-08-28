@@ -5,6 +5,7 @@ import java.util.UUID;
 import java.util.Vector;
 
 import william.miranda.poker.model.Carta.Naipe;
+import william.miranda.poker.controller.Utils;
 
 public class ClasseTeste
 {
@@ -64,7 +65,7 @@ public class ClasseTeste
 		sb.append(" - Dinheiro = ");
 		sb.append(j.getDinheiro());
 		
-		System.out.println(sb);
+		Utils.Log(sb);
 	}
 	
 	public static void testarDesempateMaos()
@@ -79,7 +80,7 @@ public class ClasseTeste
 		
 		Mao m1 = Poker.analisaJogo(tmp1);
 		m.add(m1);
-		System.out.println(m1);
+		Utils.Log(m1);
 		
 		ArrayList<Carta> tmp2 = new ArrayList<Carta>();
 		tmp2.add(new Carta(9, Naipe.PAUS));
@@ -90,7 +91,7 @@ public class ClasseTeste
 		
 		Mao m2 = Poker.analisaJogo(tmp2);
 		m.add(m2);
-		System.out.println(m2);
+		Utils.Log(m2);
 		
 		ArrayList<Carta> tmp3 = new ArrayList<Carta>();
 		tmp3.add(new Carta(1, Naipe.PAUS));
@@ -101,7 +102,7 @@ public class ClasseTeste
 		
 		Mao m3 = Poker.analisaJogo(tmp3);
 		m.add(m3);
-		System.out.println(m3);
+		Utils.Log(m3);
 		
 		ArrayList<Carta> tmp4 = new ArrayList<Carta>();
 		tmp4.add(new Carta(13, Naipe.PAUS));
@@ -112,7 +113,7 @@ public class ClasseTeste
 		
 		Mao m4 = Poker.analisaJogo(tmp4);
 		m.add(m4);
-		System.out.println(m4);
+		Utils.Log(m4);
 		
 		ArrayList<Carta> tmp5 = new ArrayList<Carta>();
 		tmp5.add(new Carta(6, Naipe.PAUS));
@@ -123,11 +124,11 @@ public class ClasseTeste
 		
 		Mao m5 = Poker.analisaJogo(tmp5);
 		m.add(m5);
-		System.out.println(m5);
+		Utils.Log(m5);
 		
-		System.out.println("------");
+		Utils.Log("------");
 		
-		System.out.println(Mao.comparar(m));
+		Utils.Log(Mao.comparar(m));
 	}
 	
 	public static void testarAnalisarJogo()
@@ -140,7 +141,7 @@ public class ClasseTeste
 		tmp.add(new Carta(7, Naipe.OUROS));
 		
 		Mao m = Poker.analisaJogo(tmp);
-		System.out.println(m);
+		Utils.Log(m);
 	}
 	
 	public static void testarBaralho()
@@ -156,7 +157,7 @@ public class ClasseTeste
 			//se ja existe (duplicada)
 			if (s.contains(c.toString()))
 			{
-				System.out.println("DUPLICADO!!!");
+				Utils.Log("DUPLICADO!!!");
 				break;
 			}
 			else//se nao existe, adiciona
