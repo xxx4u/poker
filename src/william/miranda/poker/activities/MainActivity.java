@@ -1,7 +1,8 @@
-package william.miranda.poker;
+package william.miranda.poker.activities;
 
-import android.os.Bundle;
+import william.miranda.poker.R;
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.Menu;
 
 public class MainActivity extends Activity {
