@@ -1,26 +1,21 @@
 package william.miranda.poker.activities;
 
-import william.miranda.poker.R;
-import william.miranda.poker.model.ClasseTeste;
-import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
 
-public class MainActivity extends Activity {
+import com.badlogic.gdx.backends.android.AndroidApplication;
+import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 
+public class MainActivity extends AndroidApplication
+{
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState)
+	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main_activity);
 		
-		ClasseTeste.testarDesempateMaos();
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main_activity, menu);
-		return true;
+		AndroidApplicationConfiguration cfg = new AndroidApplicationConfiguration();
+        cfg.useGL20 = false;
+        
+        initialize(new PokerGame(), cfg);
 	}
 
 }
