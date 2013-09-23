@@ -1,13 +1,13 @@
 package william.miranda.poker.activities;
 
-import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
-public class PokerGame implements ApplicationListener
+public class PokerGame extends Game
 {
 	OrthographicCamera camera;
 	Rectangle bucket;
@@ -24,9 +24,9 @@ public class PokerGame implements ApplicationListener
 	}
 
 	@Override
-	public void dispose() {
-		// TODO Auto-generated method stub
-
+	public void dispose()
+	{
+		batch.dispose();
 	}
 
 	@Override
@@ -38,6 +38,8 @@ public class PokerGame implements ApplicationListener
 	@Override
 	public void render()
 	{
+		super.render();
+		
 		Gdx.gl.glClearColor(0, 0, 0.2f, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		
