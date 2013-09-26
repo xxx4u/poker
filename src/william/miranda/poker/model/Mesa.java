@@ -2,18 +2,22 @@ package william.miranda.poker.model;
 
 import java.util.ArrayList;
 
+import william.miranda.poker.view.ViewUtils;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 /**
  * Classe que contem as coisas intrinsecas da Mesa, tais como as Cartas, Pot
  * Funciona basicamente como um container para a Classe Rodada
- * É usada pelo Jogador (no caso Bot) para analisar a jogada
- * 
- * A cada Rodada, eh criado um novo objeto desta classe
+ * Ã© usada pelo Jogador (no caso Bot) para analisar a jogada
  */
-public class Mesa
+public class Mesa implements Desenhavel
 {
 	public static enum TurnosMesa{PRE_FLOP, FLOP, TURN, RIVER, SHOWDOWN};
 	
-	private int pot = 0;
 	private ArrayList<Carta> cartas;
 	private TurnosMesa turnoMesa;
 	
@@ -29,21 +33,11 @@ public class Mesa
         cartas.add(c);
     }
 	
-	//adiciona uma quantidade no pot
-	public void addPot(int valor)
-	{
-		this.pot += valor;
-	}
-	
 	//gets and sets
 	public ArrayList<Carta> getCartas()	{
 		return this.cartas;
 	}
 	
-	public int getPot() {
-		return pot;
-	}
-
 	public TurnosMesa getTurnoMesa() {
 		return turnoMesa;
 	}
@@ -61,5 +55,20 @@ public class Mesa
 			sb.append(cartas.toString());
 		
 		return sb.toString();
+	}
+	
+	public void desenhar(SpriteBatch batch)
+	{
+		if (cartas == null)
+			return;
+		
+		for (int i=0 ; i<cartas.size() ; i++)
+		{
+			Carta carta = cartas.get(i);
+			FileHandle fileHandle = Gdx.files.internal(ViewUtils.getResourceName(carta));
+			Texture t = new Texture(fileHandle);
+			
+			batch.draw(t, 100*i, ViewUtils.getAltura()/2);
+		}
 	}
 }

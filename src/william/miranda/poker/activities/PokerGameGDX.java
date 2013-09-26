@@ -1,6 +1,7 @@
 package william.miranda.poker.activities;
 
-import william.miranda.poker.model.MesaFisica;
+import william.miranda.poker.controller.PokerInputProcessor;
+import william.miranda.poker.model.PokerGame;
 import william.miranda.poker.view.PlayerSlot;
 import william.miranda.poker.view.ViewUtils;
 
@@ -11,31 +12,35 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class PokerGame extends Game
+public class PokerGameGDX extends Game
 {
 	OrthographicCamera camera;
 	SpriteBatch batch;
 		
-	ViewUtils viewUtils;
 	PlayerSlot slot;
+	
+	PokerGame pokerGame;
 	
 	@Override
 	public void create()
 	{
-		viewUtils = new ViewUtils();
-		
 		Texture.setEnforcePotImages(false);
 		
-		viewUtils.setLargura(Gdx.graphics.getWidth());
-		viewUtils.setAltura(Gdx.graphics.getHeight());
+		PokerInputProcessor inputProcessor = new PokerInputProcessor();
+		Gdx.input.setInputProcessor(inputProcessor);
+		
+		ViewUtils.setLargura(Gdx.graphics.getWidth());
+		ViewUtils.setAltura(Gdx.graphics.getHeight());
 		
 		//create the camera
 		camera = new OrthographicCamera();
-		camera.setToOrtho(false, viewUtils.getLargura(), viewUtils.getAltura());
+		camera.setToOrtho(false, ViewUtils.getLargura(), ViewUtils.getAltura());
 		
 		batch = new SpriteBatch();
 		
-		MesaFisica mf = new MesaFisica();
+		//inicia as classes do jogo
+		pokerGame = PokerGame.getInstance();
+		pokerGame.iniciarNovaRodada();
 	}
 
 	@Override
@@ -66,7 +71,10 @@ public class PokerGame extends Game
 		batch.setProjectionMatrix(camera.combined);
 		
 		//begin a new batch and draw the bucket and all drops
-		batch.begin();		
+		batch.begin();
+		
+		pokerGame.desenhar(batch);
+		
 		batch.end();
 	}
 

@@ -8,8 +8,8 @@ public class ViewUtils
 	public static final String FOLDER_CARTAS = "cartas/";
 	
 	/* tamanho da tela */
-	private int largura;
-	private int altura;
+	private static int largura;
+	private static int altura;
 	
 	public static String getResourceName(Carta carta)
     {
@@ -40,27 +40,27 @@ public class ViewUtils
     	return sb.toString();
     }
 	
-	public int getLargura() {
+	public static int getLargura() {
 		return largura;
 	}
 	
-	public void setLargura(int largura)
+	public static void setLargura(int largura)
 	{
 		if (largura > 600)
-			this.largura = 600;
+			ViewUtils.largura = 600;
 		else
-			this.largura = largura;
+			ViewUtils.largura = largura;
 	}
 	
-	public int getAltura() {
+	public static int getAltura() {
 		return altura;
 	}
 	
-	public void setAltura(int altura)
+	public static void setAltura(int altura)
 	{
 		if (altura > 1000)
-			this.altura = 1000;
+			ViewUtils.altura = 1000;
 		else
-			this.altura = altura;
+			ViewUtils.altura = altura;
 	}
 }

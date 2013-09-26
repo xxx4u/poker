@@ -11,6 +11,9 @@ public class Jogador
     private String nome;
     private ArrayList<Carta> cartas = null;
     
+    //diz se o jogador deu Fold na rodada
+    private boolean isFold;
+    
     //quantas fichas o jogador possui no total
     private int dinheiro;
     
@@ -18,7 +21,7 @@ public class Jogador
      * no Pot e esta variavel eh zerada */
     private int valorApostado;
     
-    //flag que define se o jogador está em All In
+    //flag que define se o jogador estï¿½ em All In
     private boolean allIn = false;
     
     //define em que posicao o jogador esta sentado na Mesa
@@ -60,17 +63,9 @@ public class Jogador
      */
     public Jogada jogar(Mesa mesa)
     {
-    	Jogada jogada;
+    	Jogada jogada = null;
     	
-    	if (this.nome.equals("William"))
-    	{
-    		//jogada = new Jogada(Jogada.TipoJogada.BET, 100);
-    		jogada = new Jogada(Jogada.TipoJogada.CHECK, 0);
-    	}
-    	else
-    	{
-    		jogada = new Jogada(Jogada.TipoJogada.CHECK, 0);
-    	}
+    	jogada = new Jogada(Jogada.TipoJogada.CHECK, 0);
     	
         return jogada;
     }
@@ -159,5 +154,13 @@ public class Jogador
 
 	public void setAllIn(boolean allIn) {
 		this.allIn = allIn;
+	}
+	
+	public void setIsFold(boolean isFold) {
+		this.isFold = isFold;
+	}
+	
+	public boolean getIsFold() {
+		return this.isFold;
 	}
 }

@@ -1,5 +1,6 @@
 package william.miranda.poker.activities;
 
+import william.miranda.poker.model.PokerGame;
 import android.os.Bundle;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
@@ -12,7 +13,7 @@ public class MainActivity extends AndroidApplication
 	{
 		super.onCreate(savedInstanceState);
 		
-        initialize(new PokerGame(), setConfig());
+        initialize(new PokerGameGDX(), setConfig());
 	}
 	
 	private AndroidApplicationConfiguration setConfig()
