@@ -4,7 +4,12 @@ import william.miranda.poker.model.Carta;
 
 public class ViewUtils
 {
+	/* constantes */
 	public static final String FOLDER_CARTAS = "cartas/";
+	
+	/* tamanho da tela */
+	private int largura;
+	private int altura;
 	
 	public static String getResourceName(Carta carta)
     {
@@ -34,4 +39,28 @@ public class ViewUtils
     	
     	return sb.toString();
     }
+	
+	public int getLargura() {
+		return largura;
+	}
+	
+	public void setLargura(int largura)
+	{
+		if (largura > 600)
+			this.largura = 600;
+		else
+			this.largura = largura;
+	}
+	
+	public int getAltura() {
+		return altura;
+	}
+	
+	public void setAltura(int altura)
+	{
+		if (altura > 1000)
+			this.altura = 1000;
+		else
+			this.altura = altura;
+	}
 }

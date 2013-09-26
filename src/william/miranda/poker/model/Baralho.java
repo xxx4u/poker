@@ -47,7 +47,6 @@ public class Baralho
         cartasDisponiveis.remove(randomPos);
         
         //cria e retorna a nova Carta
-        Carta novaCarta = new Carta(tmp);
-        return novaCarta;
+        return new Carta(tmp);
     }
 }
