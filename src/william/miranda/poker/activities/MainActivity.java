@@ -12,10 +12,18 @@ public class MainActivity extends AndroidApplication
 	{
 		super.onCreate(savedInstanceState);
 		
+        initialize(new PokerGame(), setConfig());
+	}
+	
+	private AndroidApplicationConfiguration setConfig()
+	{
 		AndroidApplicationConfiguration cfg = new AndroidApplicationConfiguration();
+		
         cfg.useGL20 = false;
+        cfg.useAccelerometer = false;
+        cfg.useCompass = false;
         
-        initialize(new PokerGame(), cfg);
+        return cfg;
 	}
 
 }
