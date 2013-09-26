@@ -1,5 +1,6 @@
 package william.miranda.poker.activities;
 
+import william.miranda.poker.model.MesaFisica;
 import william.miranda.poker.view.PlayerSlot;
 import william.miranda.poker.view.ViewUtils;
 
@@ -33,6 +34,8 @@ public class PokerGame extends Game
 		camera.setToOrtho(false, viewUtils.getLargura(), viewUtils.getAltura());
 		
 		batch = new SpriteBatch();
+		
+		MesaFisica mf = new MesaFisica();
 	}
 
 	@Override

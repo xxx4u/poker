@@ -3,7 +3,7 @@ package william.miranda.poker.model;
 /*
  * Classe que implementa funcoes utilitarias
  */
-public class Utils
+public class PokerUtils
 {
 	public static long fatorial(int n)
 	{

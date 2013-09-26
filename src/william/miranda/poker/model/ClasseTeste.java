@@ -38,19 +38,6 @@ public class ClasseTeste
 		return new Jogador(UUID.randomUUID().toString().substring(0, 7), 500);
 	}
 	
-	public static void testarGameLoop()
-	{
-		//inicializa e preenche a rodada
-		Rodada r = new Rodada();
-		r.setJogadores(gerarJogadores(8));
-		r.setValorSmallBlind(10);
-		r.setValorBigBlind(20);
-				
-		GameLoop gl = new GameLoop(r);
-		
-		new Thread(gl).start();
-	}
-	
 	public static void testarAposta()
 	{
 		Jogador j = new Jogador("William", 500);
