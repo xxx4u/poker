@@ -98,9 +98,8 @@ public class Bot extends Jogador
 		return new Jogada(TipoJogada.CHECK, 0);
 	}
 	
-	@Override
-	public void desenhar(SpriteBatch batch, int pos)
+	public boolean isBot()
 	{
-		//para os bots nao desenhamos nada
+		return true;
 	}
 }

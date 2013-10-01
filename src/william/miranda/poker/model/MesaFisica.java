@@ -63,12 +63,20 @@ public class MesaFisica implements Desenhavel
 	{
 		Random rand = new Random();
 		Jogador j = null;
+
+		int pos = rand.nextInt(MAX_PLAYERS);
 		
-		do
+		j = cadeiras.get(pos);
+				
+		while (j == null)
 		{
-			int pos = rand.nextInt(MAX_PLAYERS);
+			pos++;
+			
+			if (pos >= MAX_PLAYERS)
+				pos = 0;
+			
 			j = cadeiras.get(pos);
-		} while (j == null);
+		}
 		
 		return j;
 	}

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import william.miranda.poker.controller.Utils;
 import william.miranda.poker.model.Carta.Naipe;
 import william.miranda.poker.model.Mao.TipoMao;
 
@@ -21,10 +22,10 @@ public class Poker
 	 * O que resulta em Combinacao(7,5) = 21 jogos possiveis
 	 * Este m�todo retorna um Array contendo os 21 jogos do jogador
 	 */
-	public static ArrayList<ArrayList<Carta>> obtemJogos(Jogador j, Mesa m)
+	public static List<List<Carta>> obtemJogos(Jogador j, Mesa m)
 	{
-		ArrayList<Carta> cartas = new ArrayList<Carta>();
-		ArrayList<ArrayList<Carta>> res = new ArrayList<ArrayList<Carta>>();
+		List<Carta> cartas = new ArrayList<Carta>();
+		List<List<Carta>> res = new ArrayList<List<Carta>>();
 		
 		//obtem todas as cartas em um unico vetor
 		cartas.addAll(m.getCartas());
@@ -38,12 +39,12 @@ public class Poker
 				if (i == k)
 					continue;
 				
-				ArrayList<Carta> tmp = new ArrayList<Carta>();
+				List<Carta> tmp = new ArrayList<Carta>();
 				
 				//remove os elementos i e k e retorna os 5 que sobram
 				for (int l=0 ; l<cartas.size() ; l++)
 				{
-					if (l != i || l != k)
+					if (l != i && l != k)
 					{
 						//insere a carta
 						tmp.add(cartas.get(l));
@@ -62,7 +63,7 @@ public class Poker
 	 * Este metodo faz a analise de um conjunto de 5 cartas
 	 * e retorna o objeto Mao, contendo o jogo formado a o vetor de cartas de desempate
 	 */
-	public static Mao analisaJogo(ArrayList<Carta> cartas)
+	public static Mao analisaJogo(List<Carta> cartas)
 	{
 		Mao mao;
 		
@@ -110,7 +111,7 @@ public class Poker
 	}
 	
 	//Verifica a HighCard
-	public static Mao isHighCard(ArrayList<Carta> cartas)
+	public static Mao isHighCard(List<Carta> cartas)
 	{
 		//duplica e ordena o vetor
 		ArrayList<Carta> tmp = new ArrayList<Carta>();
@@ -136,7 +137,7 @@ public class Poker
 	}
 	
 	//Verifica se eh One Pair
-	public static Mao isOnePair(ArrayList<Carta> cartas)
+	public static Mao isOnePair(List<Carta> cartas)
 	{
 		//inicializa os contadores
 		int[] count;
@@ -189,7 +190,7 @@ public class Poker
 	
 	
 	//Verifica se eh Two Pair
-	public static Mao isTwoPair(ArrayList<Carta> cartas)
+	public static Mao isTwoPair(List<Carta> cartas)
 	{
 		//inicializa os contadores
 		int[] count;
@@ -241,7 +242,7 @@ public class Poker
 	}
 	
 	//Verifica se eh Three of A kind
-	public static Mao isThreeOfAKind(ArrayList<Carta> cartas)
+	public static Mao isThreeOfAKind(List<Carta> cartas)
 	{
 		//inicializa os contadores
 		int[] count;
@@ -293,7 +294,7 @@ public class Poker
 	}
 	
 	//Verifica se eh Full House
-	public static Mao isFullHouse(ArrayList<Carta> cartas)
+	public static Mao isFullHouse(List<Carta> cartas)
 	{
 		//inicializa os contadores
 		int[] count;
@@ -325,7 +326,7 @@ public class Poker
 	}
 	
 	//Verifica se eh FourOfAKind
-	public static Mao isFourOfAKind(ArrayList<Carta> cartas)
+	public static Mao isFourOfAKind(List<Carta> cartas)
 	{
 		//inicializa os contadores
 		int[] count;
@@ -359,7 +360,7 @@ public class Poker
 	}
 	
 	//Verifica se eh um Royal Flush
-	public static Mao isRoyalFlush(ArrayList<Carta> cartas)
+	public static Mao isRoyalFlush(List<Carta> cartas)
 	{
 		Mao ehStraightFlush = isStraightFlush(cartas);
 		
@@ -378,7 +379,7 @@ public class Poker
 	}
 	
 	//Verifica se eh um Straight Flush
-	public static Mao isStraightFlush(ArrayList<Carta> cartas)
+	public static Mao isStraightFlush(List<Carta> cartas)
 	{
 		Mao ehFlush = isFlush(cartas);
 		Mao ehStraight = isStraight(cartas);
@@ -396,7 +397,7 @@ public class Poker
 	}
 	
 	//Verifica se eh um Flush
-	public static Mao isFlush(ArrayList<Carta> cartas)
+	public static Mao isFlush(List<Carta> cartas)
 	{
 		Naipe naipe = cartas.get(0).getNaipe();
 		
@@ -430,7 +431,7 @@ public class Poker
 	}
 	
 	//verifica se eh um Straight
-	public static Mao isStraight(ArrayList<Carta> cartas)
+	public static Mao isStraight(List<Carta> cartas)
 	{
 		ArrayList<Carta> tmp = new ArrayList<Carta>();
 		boolean formaSequencia = true;
@@ -489,7 +490,7 @@ public class Poker
 	}
 	
 	//Retorna um vetor contendo a contagem das cartas
-	public static int[] contaCartas(ArrayList<Carta> cartas)
+	public static int[] contaCartas(List<Carta> cartas)
 	{
 		int[] count = new int[]{0,0,0,0,0};
 		

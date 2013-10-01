@@ -80,8 +80,14 @@ public class PokerGame implements Desenhavel
 	/* GameLoop */
 	public void rodarJogo()
 	{
+		//define dealer, smallBlind e bigBlind
 		setPosicoes();
+		
+		//da duas cartas para cada jogador
 		darCartas();
+		
+		//inicia o jogo de fato
+		
 	}
 	
 	public void setPosicoes()
@@ -104,13 +110,18 @@ public class PokerGame implements Desenhavel
 	
 	public void darCartas()
 	{
-		Utils.Log("Dando as Cartas");
-		
 		for (Jogador j : rodada.getJogadores())
 		{
 			if (j != null)
 			{
 				j.addCarta(baralho.sortearCarta());
+			}
+		}
+		
+		for (Jogador j : rodada.getJogadores())
+		{
+			if (j != null)
+			{
 				j.addCarta(baralho.sortearCarta());
 			}
 		}

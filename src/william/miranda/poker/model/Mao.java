@@ -31,7 +31,7 @@ public class Mao
 	}
 	
 	//Compara diversas maos e retorna a melhor, ou um conjunto caso tenha empate
-	public static List<Mao> comparar(ArrayList<Mao> m)
+	public static List<Mao> comparar(List<Mao> m)
 	{
 		List<Mao> melhorMao = new ArrayList<Mao>();
 		

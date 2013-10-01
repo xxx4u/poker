@@ -98,6 +98,11 @@ public class Jogador
         return this.cartas;
     }
     
+    public boolean isBot()
+	{
+		return false;
+	}
+    
     public void desenhar(SpriteBatch batch, int slot)
     {
 		if (cartas == null)
