@@ -1,6 +1,15 @@
 package william.miranda.poker.model;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import william.miranda.poker.view.PlayerSlot;
+import william.miranda.poker.view.ViewUtils;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
  * Armazena as informações relevantes de um jogador
@@ -16,17 +25,10 @@ public class Jogador
     
     //quantas fichas o jogador possui no total
     private int dinheiro;
-    
-    /* quantas fichas o jogador possui apostado na mesa... ao final da Rodada, este valor eh adicionado
-     * no Pot e esta variavel eh zerada */
-    private int valorApostado;
-    
-    //flag que define se o jogador est� em All In
+      
+    //flag que define se o jogador está em All In
     private boolean allIn = false;
-    
-    //define em que posicao o jogador esta sentado na Mesa
-    public int posicaoMesa;
-    
+        
     /* Construtor do Jogador
      * Preenche o nome do Jogador
      */
@@ -80,32 +82,7 @@ public class Jogador
      */
     public int apostar(int valor)
     {
-    	//salva quanto pode ser apostado
-		int valorAposta = valor;
-		
-    	//se precisa apostar mais do que tem, aposta tudo e marca como ALL IN
-    	if (valor >= this.dinheiro)
-    	{
-    		//aposta tudo o que tem
-    		valorAposta = this.dinheiro;
-    		
-    		//marca como ALL IN
-    		setAllIn(true);
-    		
-    		//zera as fichas
-    		this.dinheiro = 0;
-    	}
-    	else//se a aposta "cabe no bolso" 
-    	{
-    		//apenas remove o valor
-    		this.dinheiro -= valorAposta;
-    	}
-
-		//adiciona as fichas na mesa
-		this.valorApostado += valorAposta;
-    	
-    	//retorna quanto foi apostado
-		return valorAposta;
+    	return 0;
     }
     
     //adiciona fichas... usado quando o jogador vence
@@ -119,6 +96,21 @@ public class Jogador
     public ArrayList<Carta> getCartas()
     {
         return this.cartas;
+    }
+    
+    public void desenhar(SpriteBatch batch, int slot)
+    {
+		if (cartas == null)
+			return;
+		
+		for (int j=0 ; j<cartas.size() ; j++)
+		{
+			Carta carta = cartas.get(j);
+			FileHandle fileHandle = Gdx.files.internal(ViewUtils.getResourceName(carta));
+			Texture t = new Texture(fileHandle);
+			
+			batch.draw(t, PlayerSlot.getSlot(slot).getX()+80*j , PlayerSlot.getSlot(slot).getY());
+		}
     }
     
     public String getNome()
@@ -146,10 +138,6 @@ public class Jogador
 
 	public int getDinheiro() {
 		return dinheiro;
-	}
-
-	public int getValorApostado() {
-		return valorApostado;
 	}
 
 	public void setAllIn(boolean allIn) {

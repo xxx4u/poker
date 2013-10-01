@@ -1,55 +1,114 @@
 package william.miranda.poker.view;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import william.miranda.poker.model.Carta;
-
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
-/**
- *  Esta Classe define o que será mostrado na posição do Jogador */
 public class PlayerSlot
 {
-	private List<Texture> texturaCartas;
+	/* coordenadas das cartas */
+	private int x;
+	private int y;
 	
-	private int aposta;
-	private Texture avatar;
+	/* coordenadas do dealer button */
+	private int dealerX;
+	private int dealerY;
 	
-	private short posicao;
-	
-	public PlayerSlot(List<Carta> cartas, int aposta)
+	public static PlayerSlot getSlot(int pos)
 	{
-		texturaCartas = getTexturas(cartas);
-		this.aposta = aposta;
-	}
-	
-	
-	/* obtem as imagens a partir do objetos Carta */
-	public List<Texture> getTexturas(List<Carta> cartas)
-	{
-		List<Texture> texturas = new ArrayList<Texture>();
+		PlayerSlot slot = new PlayerSlot();
 		
-		for (Carta c : cartas)
+		switch (pos)
 		{
-			FileHandle handle = Gdx.files.internal(ViewUtils.getResourceName(c));
-			texturas.add(new Texture(handle));
+			case 0:
+				slot.setX(ViewUtils.getLargura()/2-80);
+				slot.setY(0);
+				slot.setDealerX(ViewUtils.getLargura()/2-80);
+				slot.setDealerY(100);
+				break;
+				
+			case 1:
+				slot.setX(0);
+				slot.setY(ViewUtils.getAltura()/4-50);
+				slot.setDealerX(15);
+				slot.setDealerY(ViewUtils.getAltura()/4-30);
+				break;
+				
+			case 2:
+				slot.setX(0);
+				slot.setY(ViewUtils.getAltura()/2-50);
+				slot.setDealerX(15);
+				slot.setDealerY(ViewUtils.getAltura()/2-30);
+				break;
+				
+			case 3:
+				slot.setX(0);
+				slot.setY(3*ViewUtils.getAltura()/4-50);
+				slot.setDealerX(15);
+				slot.setDealerY(3*ViewUtils.getAltura()/4-30);
+				break;
+				
+			case 4:
+				slot.setX(ViewUtils.getLargura()/2-80);
+				slot.setY(ViewUtils.getAltura()-100);
+				slot.setDealerX(ViewUtils.getLargura()/2-50);
+				slot.setDealerY(ViewUtils.getAltura()-60);
+				break;
+				
+			case 5:
+				slot.setX(ViewUtils.getLargura()-160);
+				slot.setY(3*ViewUtils.getAltura()/4-50);
+				slot.setDealerX(ViewUtils.getLargura()-80);
+				slot.setDealerY(3*ViewUtils.getAltura()/4-30);
+				break;
+				
+			case 6:
+				slot.setX(ViewUtils.getLargura()-160);
+				slot.setY(ViewUtils.getAltura()/2-50);
+				slot.setDealerX(ViewUtils.getLargura()-80);
+				slot.setDealerY(ViewUtils.getAltura()/2-30);
+				break;
+				
+			case 7:
+				slot.setX(ViewUtils.getLargura()-160);
+				slot.setY(ViewUtils.getAltura()/4-50);
+				slot.setDealerX(ViewUtils.getLargura()-80);
+				slot.setDealerY(ViewUtils.getAltura()/4-30);
+				break;
 		}
 		
-		return texturas;
+		return slot;
 	}
 	
-	//desenha os objetos na tela
-	public void desenhar(SpriteBatch batch)
+	public int getDealerX() {
+		return dealerX;
+	}
+
+	public void setDealerX(int dealerX) {
+		this.dealerX = dealerX;
+	}
+
+	public int getDealerY() {
+		return dealerY;
+	}
+
+	public void setDealerY(int dealerY) {
+		this.dealerY = dealerY;
+	}
+
+	public void setX(int x)
 	{
-		//desenha as cartas
-		for (int i=0 ; i<texturaCartas.size() ; i++)
-		{
-			Texture t = texturaCartas.get(i);
-			batch.draw(t, 100*i, 0);
-		}
+		this.x = x;
+	}
+	
+	public int getX()
+	{
+		return this.x;
+	}
+	
+	public void setY(int y)
+	{
+		this.y = y;
+	}
+	
+	public int getY()
+	{
+		return this.y;
 	}
 }

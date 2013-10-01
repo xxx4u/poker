@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import william.miranda.poker.model.Jogada.TipoJogada;
 import william.miranda.poker.model.Mesa.TurnosMesa;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 /*
  * Classe que implementa os Bots.
  * Basta sobrecarregar o m�todo jogar()
@@ -94,5 +96,11 @@ public class Bot extends Jogador
 	private Jogada jogarRiver(Mesa mesa)
 	{
 		return new Jogada(TipoJogada.CHECK, 0);
+	}
+	
+	@Override
+	public void desenhar(SpriteBatch batch, int pos)
+	{
+		//para os bots nao desenhamos nada
 	}
 }

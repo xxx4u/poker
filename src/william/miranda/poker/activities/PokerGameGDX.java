@@ -2,7 +2,6 @@ package william.miranda.poker.activities;
 
 import william.miranda.poker.controller.PokerInputProcessor;
 import william.miranda.poker.model.PokerGame;
-import william.miranda.poker.view.PlayerSlot;
 import william.miranda.poker.view.ViewUtils;
 
 import com.badlogic.gdx.Game;
@@ -17,8 +16,6 @@ public class PokerGameGDX extends Game
 	OrthographicCamera camera;
 	SpriteBatch batch;
 		
-	PlayerSlot slot;
-	
 	PokerGame pokerGame;
 	
 	@Override
@@ -41,6 +38,7 @@ public class PokerGameGDX extends Game
 		//inicia as classes do jogo
 		pokerGame = PokerGame.getInstance();
 		pokerGame.iniciarNovaRodada();
+		pokerGame.rodarJogo();
 	}
 
 	@Override

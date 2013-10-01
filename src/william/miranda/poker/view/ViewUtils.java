@@ -6,6 +6,7 @@ public class ViewUtils
 {
 	/* constantes */
 	public static final String FOLDER_CARTAS = "cartas/";
+	public static final String FOLDER_FICHAS = "chips/";
 	
 	/* tamanho da tela */
 	private static int largura;
@@ -39,6 +40,11 @@ public class ViewUtils
     	
     	return sb.toString();
     }
+	
+	public static String getDealerButton()
+	{
+		return FOLDER_FICHAS + "/dealer1.png";
+	}
 	
 	public static int getLargura() {
 		return largura;

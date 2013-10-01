@@ -57,6 +57,7 @@ public class Mesa implements Desenhavel
 		return sb.toString();
 	}
 	
+	/* A mesa sabe desenhar suas cartas */
 	public void desenhar(SpriteBatch batch)
 	{
 		if (cartas == null)
@@ -68,7 +69,7 @@ public class Mesa implements Desenhavel
 			FileHandle fileHandle = Gdx.files.internal(ViewUtils.getResourceName(carta));
 			Texture t = new Texture(fileHandle);
 			
-			batch.draw(t, 100*i, ViewUtils.getAltura()/2);
+			batch.draw(t, 100*i, ViewUtils.getAltura()/2+60);
 		}
 	}
 }

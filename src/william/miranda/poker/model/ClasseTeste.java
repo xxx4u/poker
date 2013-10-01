@@ -38,23 +38,6 @@ public class ClasseTeste
 		return new Jogador(UUID.randomUUID().toString().substring(0, 7), 500);
 	}
 	
-	public static void testarAposta()
-	{
-		Jogador j = new Jogador("William", 500);
-		j.apostar(400);
-		
-		StringBuilder sb = new StringBuilder();
-		sb.append(j.getNome());
-		sb.append(" apostou ");
-		sb.append(j.getValorApostado());
-		sb.append(" - All In = ");
-		sb.append(j.isAllIn());
-		sb.append(" - Dinheiro = ");
-		sb.append(j.getDinheiro());
-		
-		Utils.Log(sb);
-	}
-	
 	public static void testarDesempateMaos()
 	{
 		ArrayList<Mao> m = new ArrayList<Mao>();

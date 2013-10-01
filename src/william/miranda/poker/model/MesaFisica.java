@@ -3,16 +3,21 @@ package william.miranda.poker.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import william.miranda.poker.controller.Utils;
+import william.miranda.poker.view.ViewUtils;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
  * Container que guarda os jogadores sentados na mesa em suas respectivas posicoes
  * O Vetor que contem os jogadores sempre terá MAX_PLAYERS posicoes e, as posicoes
  * desocupadas serão NULL
  */
-public class MesaFisica
+public class MesaFisica implements Desenhavel
 {
-	public static final int MAX_PLAYERS = 10;
+	public static final int MAX_PLAYERS = 8;
 	
 	private List<Jogador> cadeiras;
 	
@@ -62,4 +67,18 @@ public class MesaFisica
 	{
 		return this.cadeiras;
 	}
+	
+	/* desenha cada jogador */
+	public void desenhar(SpriteBatch batch)
+    {
+		for (int i=0 ; i<cadeiras.size() ; i++)
+		{
+			Jogador jogador = cadeiras.get(i);
+			
+			if (jogador != null)
+			{
+				jogador.desenhar(batch, i);
+			}
+		}
+    }
 }

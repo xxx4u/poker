@@ -1,6 +1,5 @@
 package william.miranda.poker.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,7 +27,7 @@ public class Rodada
 		jogadorSmallBlind.apostar(valorSmallBlind);
 		jogadorBigBlind.apostar(valorBigBlind);
 	}
-		
+	
 	//gets and sets
 	public Jogador getDealer() {
 		return dealer;
