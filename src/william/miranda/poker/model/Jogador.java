@@ -18,7 +18,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Jogador
 {
     private String nome;
-    private ArrayList<Carta> cartas = null;
+    private List<Carta> cartas = null;
     
     //diz se o jogador deu Fold na rodada
     private boolean isFold;
@@ -93,7 +93,7 @@ public class Jogador
     /* Retorna o vetor de cartas
      * Utilizado para tratar a mao do jogador
      */
-    public ArrayList<Carta> getCartas()
+    public List<Carta> getCartas()
     {
         return this.cartas;
     }
@@ -155,5 +155,10 @@ public class Jogador
 	
 	public boolean getIsFold() {
 		return this.isFold;
+	}
+	
+	public void reset()
+	{
+		cartas = null;
 	}
 }

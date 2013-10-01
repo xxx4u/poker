@@ -1,11 +1,9 @@
 package william.miranda.poker.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import william.miranda.poker.model.Jogada.TipoJogada;
 import william.miranda.poker.model.Mesa.TurnosMesa;
-
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /*
  * Classe que implementa os Bots.
@@ -48,7 +46,7 @@ public class Bot extends Jogador
 	//verifica se o jogador possui um Par
 	private boolean isPair()
 	{
-		ArrayList<Carta> cartas = getCartas();
+		List<Carta> cartas = getCartas();
 		
 		if (cartas.get(0).getNumero() == cartas.get(1).getNumero())
 			return true;
@@ -59,7 +57,7 @@ public class Bot extends Jogador
 	//verifica se as cartas sao do mesmo naipe
 	private boolean isSameNaipe()
 	{
-		ArrayList<Carta> cartas = getCartas();
+		List<Carta> cartas = getCartas();
 		
 		if (cartas.get(0).getNaipe() == cartas.get(1).getNaipe())
 			return true;

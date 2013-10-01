@@ -16,6 +16,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  */
 public class PokerGame implements Desenhavel
 {
+	public static boolean vitoria = true;
+	
 	//fazemos um singleton para o jogo
 	private static PokerGame instance = null;
 	
@@ -72,6 +74,14 @@ public class PokerGame implements Desenhavel
 		
 		//inicializa o objeto mesa (para a rodada)
 		mesa = new Mesa();
+		
+		for (Jogador j : mesaFisica.getJogadores())
+		{
+			if (j != null)
+			{
+				j.reset();
+			}
+		}
 		
 		//inicializa a jogada passando os jogadores que estao sentados na mesaFisica
 		rodada = new Rodada(mesaFisica.getJogadores());
