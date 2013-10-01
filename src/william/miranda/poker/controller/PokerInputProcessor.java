@@ -1,7 +1,11 @@
 package william.miranda.poker.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import william.miranda.poker.model.Baralho;
 import william.miranda.poker.model.Carta;
@@ -60,7 +64,7 @@ public class PokerInputProcessor implements InputProcessor
 		}
 		else
 		{
-			List<Mao> melhoresMaosTodos = new ArrayList<Mao>();
+			Map<Jogador, Mao> melhoresMaosTodos = new HashMap<Jogador, Mao>();
 			
 			for (Jogador j : rodada.getJogadores())
 			{
@@ -80,12 +84,36 @@ public class PokerInputProcessor implements InputProcessor
 					
 					//pega a melhor mao do jogador
 					List<Mao> melhoresMaos = Mao.comparar(maos);
-					melhoresMaosTodos.add(melhoresMaos.get(0));
+					melhoresMaosTodos.put(j, melhoresMaos.get(0));
 				}
 			}
 			
 			//melhoresMaosTodos guarda a melhor mao de cada jogador
-			Utils.Log(Mao.comparar(melhoresMaosTodos));
+			Iterator<Mao> i = melhoresMaosTodos.values().iterator();
+			List<Mao> best = new ArrayList<Mao>();
+			
+			while (i.hasNext())
+			{
+				best.add(i.next());
+			}
+			
+			for (Mao m : Mao.comparar(best))
+			{
+				Iterator<Entry<Jogador, Mao>> k = melhoresMaosTodos.entrySet().iterator();
+				
+				while (k.hasNext())
+				{
+					Entry<Jogador, Mao> e = k.next();
+					
+					if (e.getValue().equals(m))
+					{
+						Utils.Log(e.getKey());
+						Utils.Log(e.getValue());
+					}
+				}
+			}
+			
+			
 		}
 		
 		return true;
