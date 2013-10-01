@@ -62,6 +62,8 @@ public class PokerGame implements Desenhavel
 	public static Mesa mesa;
 	public static Baralho baralho;
 	
+	public static Jogador dealer = null;//mantemos para nao perder na hora de mudar de rodada
+	
 	/* reinicializa as variaveis preparando o jogo para uma nova Rodada */
 	public void iniciarNovaRodada()
 	{
@@ -78,8 +80,26 @@ public class PokerGame implements Desenhavel
 	/* GameLoop */
 	public void rodarJogo()
 	{
-		rodada.setDealer(mesaFisica.getJogadores().get(4));
+		setPosicoes();
 		darCartas();
+	}
+	
+	public void setPosicoes()
+	{
+		//se nao existia dealer, sorteia um
+		if (dealer == null)
+		{
+			dealer = mesaFisica.getRandom();
+		}
+		else//se ja existia, passa pra frente
+		{
+			dealer = mesaFisica.proximoJogador(dealer);
+		}
+		
+		//define os objetos da rodada
+		rodada.setDealer(dealer);
+		rodada.setJogadorSmallBlind(mesaFisica.proximoJogador(dealer));
+		rodada.setJogadorBigBlind(mesaFisica.proximoJogador(rodada.getJogadorSmallBlind()));
 	}
 	
 	public void darCartas()

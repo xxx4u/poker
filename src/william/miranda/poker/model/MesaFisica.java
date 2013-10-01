@@ -2,12 +2,8 @@ package william.miranda.poker.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-import william.miranda.poker.view.ViewUtils;
-
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
@@ -61,6 +57,20 @@ public class MesaFisica implements Desenhavel
 		} while (cadeiras.get(tmp) == null || cadeiras.get(tmp).getIsFold());//se nao tem ninguem no lugar, ou se o jogador ja deu FOLD
 		
 		return cadeiras.get(tmp);
+	}
+	
+	public Jogador getRandom()
+	{
+		Random rand = new Random();
+		Jogador j = null;
+		
+		do
+		{
+			int pos = rand.nextInt(MAX_PLAYERS);
+			j = cadeiras.get(pos);
+		} while (j == null);
+		
+		return j;
 	}
 	
 	public List<Jogador> getJogadores()
