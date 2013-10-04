@@ -14,10 +14,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class PokerGameGDX extends Game
 {
 	OrthographicCamera camera;
-	SpriteBatch batch;
-		
-	PokerGame pokerGame;
-	
+
 	@Override
 	public void create()
 	{
@@ -33,18 +30,16 @@ public class PokerGameGDX extends Game
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, ViewUtils.getLargura(), ViewUtils.getAltura());
 		
-		batch = new SpriteBatch();
+		PokerGame.batch = new SpriteBatch();
 		
 		//inicia as classes do jogo
-		pokerGame = PokerGame.getInstance();
-		pokerGame.iniciarNovaRodada();
-		pokerGame.rodarJogo();
+		PokerGame.bla();
 	}
 
 	@Override
 	public void dispose()
 	{
-		batch.dispose();
+		PokerGame.batch.dispose();
 	}
 
 	@Override
@@ -66,14 +61,14 @@ public class PokerGameGDX extends Game
 		
 		//tell the SpriteBatch to render in the
 		//coordinate system specified by the camera.
-		batch.setProjectionMatrix(camera.combined);
+		PokerGame.batch.setProjectionMatrix(camera.combined);
 		
 		//begin a new batch and draw the bucket and all drops
-		batch.begin();
+		PokerGame.batch.begin();
 		
-		pokerGame.desenhar(batch);
+		PokerGame.getInstance().desenhar(PokerGame.batch);
 		
-		batch.end();
+		PokerGame.batch.end();
 	}
 
 	@Override

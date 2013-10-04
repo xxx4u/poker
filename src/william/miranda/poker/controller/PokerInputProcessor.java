@@ -17,6 +17,7 @@ import william.miranda.poker.model.PokerGame;
 import william.miranda.poker.model.Rodada;
 
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class PokerInputProcessor implements InputProcessor 
 {
@@ -118,11 +119,9 @@ public class PokerInputProcessor implements InputProcessor
 				PokerGame.vitoria = false;
 			}
 		
-			
-			PokerGame.vitoria = true;
-			PokerGame pokerGame = PokerGame.getInstance();
-			pokerGame.iniciarNovaRodada();
-			pokerGame.rodarJogo();
+			//cria novamente o sprite batch e inicia outra rodada
+			PokerGame.batch = new SpriteBatch();
+			PokerGame.bla();
 		}
 		
 		return true;

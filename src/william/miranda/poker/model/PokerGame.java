@@ -1,13 +1,11 @@
 package william.miranda.poker.model;
 
-import william.miranda.poker.controller.Utils;
 import william.miranda.poker.view.PlayerSlot;
 import william.miranda.poker.view.ViewUtils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
@@ -20,6 +18,9 @@ public class PokerGame implements Desenhavel
 	
 	//fazemos um singleton para o jogo
 	private static PokerGame instance = null;
+	
+	//guarda a instance do SpriteBatch
+	public static SpriteBatch batch;
 	
 	//cria a o jogo com jogadores dummy
 	private PokerGame()
@@ -67,7 +68,7 @@ public class PokerGame implements Desenhavel
 	public static Jogador dealer = null;//mantemos para nao perder na hora de mudar de rodada
 	
 	/* reinicializa as variaveis preparando o jogo para uma nova Rodada */
-	public void iniciarNovaRodada()
+	public void prepararNovaRodada()
 	{
 		//inicializa o baralho
 		baralho = new Baralho();
@@ -147,8 +148,6 @@ public class PokerGame implements Desenhavel
 		
 		//desenha o dealer button
 		desenhaDealerButton(batch);
-		
-		
 	}
 	
 	public void desenhaDealerButton(SpriteBatch batch)
@@ -159,5 +158,14 @@ public class PokerGame implements Desenhavel
 		Texture t = new Texture(fileHandle);
 		
 		batch.draw(t, PlayerSlot.getSlot(posDealer).getDealerX(), PlayerSlot.getSlot(posDealer).getDealerY());
+	}
+	
+	//chama os metodos para criar a mesa e iniciar a rodada
+	public static void bla()
+	{
+		vitoria = true;
+		PokerGame pokerGame = PokerGame.getInstance();
+		pokerGame.prepararNovaRodada();
+		pokerGame.rodarJogo();
 	}
 }
