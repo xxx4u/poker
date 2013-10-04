@@ -82,6 +82,7 @@ public class PokerGame implements Desenhavel
 		//inicializa o objeto mesa (para a rodada)
 		mesa = new Mesa();
 		
+		//limpa as cartas dos jogadores
 		for (Jogador j : mesaFisica.getJogadores())
 		{
 			if (j != null)
@@ -121,8 +122,6 @@ public class PokerGame implements Desenhavel
 		{
 			dealer = mesaFisica.proximoJogador(dealer);
 		}
-		
-		dealer = mesaFisica.getJogadores().get(0);
 		
 		//define os objetos da rodada
 		rodada.setDealer(dealer);
