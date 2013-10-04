@@ -136,18 +136,15 @@ public class PokerGame implements Desenhavel
 	/* Da DUAS cartas para cada jogador, respeitando a ordem */
 	public void darCartas()
 	{
-		for (Jogador j : rodada.getJogadores())
+		for (int i=0 ; i<2 ; i++)
 		{
-			if (j != null)
+			Jogador j = jogadorInicio;
+			
+			j.addCarta(baralho.sortearCarta());
+			
+			while (!j.equals(jogadorFim))
 			{
-				j.addCarta(baralho.sortearCarta());
-			}
-		}
-		
-		for (Jogador j : rodada.getJogadores())
-		{
-			if (j != null)
-			{
+				j = mesaFisica.proximoJogador(j);
 				j.addCarta(baralho.sortearCarta());
 			}
 		}
@@ -178,6 +175,8 @@ public class PokerGame implements Desenhavel
 	//chama os metodos para criar a mesa e iniciar a rodada
 	public static void prepararIniciarRodada()
 	{
+		batch = new SpriteBatch();
+		
 		vitoria = true;
 		PokerGame pokerGame = PokerGame.getInstance();
 		pokerGame.prepararNovaRodada();

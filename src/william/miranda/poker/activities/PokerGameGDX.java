@@ -30,8 +30,6 @@ public class PokerGameGDX extends Game
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, ViewUtils.getLargura(), ViewUtils.getAltura());
 		
-		PokerGame.batch = new SpriteBatch();
-		
 		//inicia as classes do jogo
 		PokerGame.prepararIniciarRodada();
 	}

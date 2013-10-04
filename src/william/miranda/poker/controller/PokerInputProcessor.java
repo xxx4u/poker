@@ -138,7 +138,6 @@ public class PokerInputProcessor implements InputProcessor
 			}
 		
 			//cria novamente o sprite batch e inicia outra rodada
-			PokerGame.batch = new SpriteBatch();
 			PokerGame.prepararIniciarRodada();
 		}
 	}
