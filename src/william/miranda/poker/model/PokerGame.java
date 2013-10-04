@@ -1,5 +1,6 @@
 package william.miranda.poker.model;
 
+import william.miranda.poker.model.Jogada.TipoJogada;
 import william.miranda.poker.view.PlayerSlot;
 import william.miranda.poker.view.ViewUtils;
 
@@ -67,6 +68,11 @@ public class PokerGame implements Desenhavel
 	
 	public static Jogador dealer = null;//mantemos para nao perder na hora de mudar de rodada
 	
+	/* variaveis que controlarao o GameLoop */
+	private static Jogador jogadorDaVez;
+	private static Jogador jogadorInicio;
+	private static Jogador jogadorFim;
+	
 	/* reinicializa as variaveis preparando o jogo para uma nova Rodada */
 	public void prepararNovaRodada()
 	{
@@ -91,14 +97,17 @@ public class PokerGame implements Desenhavel
 	/* GameLoop */
 	public void rodarJogo()
 	{
-		//define dealer, smallBlind e bigBlind
+		//define dealer, smallBlind e bigBlind, jogadorInicio e jogadorFim
 		setPosicoes();
 		
 		//da duas cartas para cada jogador
 		darCartas();
 		
-		//inicia o jogo de fato
-		
+		/* inicia o jogo de fato
+		 * Faz cada Jogador jogar
+		 * Se for um Bot, basta apenas coletar o retorno do método Jogar()
+		 * Se é um Player, precisa mostrar os botões de ação para então tratar o input */
+		rodarGameLoop();
 	}
 	
 	public void setPosicoes()
@@ -113,12 +122,19 @@ public class PokerGame implements Desenhavel
 			dealer = mesaFisica.proximoJogador(dealer);
 		}
 		
+		dealer = mesaFisica.getJogadores().get(0);
+		
 		//define os objetos da rodada
 		rodada.setDealer(dealer);
 		rodada.setJogadorSmallBlind(mesaFisica.proximoJogador(dealer));
 		rodada.setJogadorBigBlind(mesaFisica.proximoJogador(rodada.getJogadorSmallBlind()));
+		
+		//define as posicoes iniciais de quem começa o jogo
+		jogadorInicio = mesaFisica.proximoJogador(rodada.getJogadorBigBlind());
+		jogadorFim = rodada.getJogadorBigBlind();
 	}
 	
+	/* Da DUAS cartas para cada jogador, respeitando a ordem */
 	public void darCartas()
 	{
 		for (Jogador j : rodada.getJogadores())
@@ -161,11 +177,27 @@ public class PokerGame implements Desenhavel
 	}
 	
 	//chama os metodos para criar a mesa e iniciar a rodada
-	public static void bla()
+	public static void prepararIniciarRodada()
 	{
 		vitoria = true;
 		PokerGame pokerGame = PokerGame.getInstance();
 		pokerGame.prepararNovaRodada();
 		pokerGame.rodarJogo();
+	}
+	
+	/* método que implementa o GameLoop
+	 * Se um bot for Jogar, apenas chama a funcao, pega o resultado e passa para o proximo
+	 * se for um Jogador, precisa mostrar os botoes e aguardar a resposta da UI (ou um timeout) */
+	public void rodarGameLoop()
+	{
+		jogadorDaVez = jogadorInicio;
+		
+		jogadorDaVez.jogar(mesa);
+		
+		while (!jogadorDaVez.equals(jogadorFim))
+		{
+			jogadorDaVez = mesaFisica.proximoJogador(jogadorDaVez);
+			jogadorDaVez.jogar(mesa);
+		}
 	}
 }

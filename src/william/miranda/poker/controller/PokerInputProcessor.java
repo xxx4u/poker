@@ -55,6 +55,24 @@ public class PokerInputProcessor implements InputProcessor
 	@Override
 	public boolean touchDown(int arg0, int arg1, int arg2, int arg3)
 	{
+		blah();
+		return true;
+	}
+
+	@Override
+	public boolean touchDragged(int arg0, int arg1, int arg2)
+	{
+		return false;
+	}
+
+	@Override
+	public boolean touchUp(int arg0, int arg1, int arg2, int arg3) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	private void blah()
+	{
 		Mesa mesa = PokerGame.mesa;
 		Baralho baralho = PokerGame.baralho;
 		Rodada rodada = PokerGame.rodada;
@@ -121,22 +139,7 @@ public class PokerInputProcessor implements InputProcessor
 		
 			//cria novamente o sprite batch e inicia outra rodada
 			PokerGame.batch = new SpriteBatch();
-			PokerGame.bla();
+			PokerGame.prepararIniciarRodada();
 		}
-		
-		return true;
 	}
-
-	@Override
-	public boolean touchDragged(int arg0, int arg1, int arg2)
-	{
-		return false;
-	}
-
-	@Override
-	public boolean touchUp(int arg0, int arg1, int arg2, int arg3) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

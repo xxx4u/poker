@@ -3,6 +3,7 @@ package william.miranda.poker.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import william.miranda.poker.controller.Utils;
 import william.miranda.poker.view.PlayerSlot;
 import william.miranda.poker.view.ViewUtils;
 
@@ -65,6 +66,7 @@ public class Jogador
      */
     public Jogada jogar(Mesa mesa)
     {
+    	Utils.Log(this.getNome());
     	Jogada jogada = null;
     	
     	jogada = new Jogada(Jogada.TipoJogada.CHECK, 0);

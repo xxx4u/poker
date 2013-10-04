@@ -33,7 +33,7 @@ public class PokerGameGDX extends Game
 		PokerGame.batch = new SpriteBatch();
 		
 		//inicia as classes do jogo
-		PokerGame.bla();
+		PokerGame.prepararIniciarRodada();
 	}
 
 	@Override

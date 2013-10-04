@@ -19,14 +19,17 @@ public class Bot extends Jogador
 	@Override
 	public Jogada jogar(Mesa mesa)
     {
+		super.jogar(mesa);
+		
 		//obtem as variaveis
-        TurnosMesa turnoMesa = mesa.getTurnoMesa();
+        //TurnosMesa turnoMesa = mesa.getTurnoMesa();
         
+        /*
         switch (turnoMesa)
         {
         	case PRE_FLOP:
         		return jogarPreFlop(mesa);
-		case FLOP:
+        	case FLOP:
         		return jogarFlop(mesa);
         		
         	case TURN:
@@ -38,6 +41,7 @@ public class Bot extends Jogador
         	default:
         		break;
         }
+        */
         
         //nunca deve chegar neste ponto
         return null;
