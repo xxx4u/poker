@@ -10,6 +10,7 @@ public class PlayerSlot
 	private int dealerX;
 	private int dealerY;
 	
+	//retorna as coordenadas de acordo com a posicao da mesa
 	public static PlayerSlot getSlot(int pos)
 	{
 		PlayerSlot slot = new PlayerSlot();

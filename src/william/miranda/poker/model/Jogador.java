@@ -105,21 +105,6 @@ public class Jogador
 		return false;
 	}
     
-    public void desenhar(SpriteBatch batch, int slot)
-    {
-		if (cartas == null)
-			return;
-		
-		for (int j=0 ; j<cartas.size() ; j++)
-		{
-			Carta carta = cartas.get(j);
-			FileHandle fileHandle = Gdx.files.internal(ViewUtils.getResourceName(carta));
-			Texture t = new Texture(fileHandle);
-			
-			batch.draw(t, PlayerSlot.getSlot(slot).getX()+80*j , PlayerSlot.getSlot(slot).getY());
-		}
-    }
-    
     public String getNome()
     {
         return this.nome;

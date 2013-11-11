@@ -2,6 +2,8 @@ package william.miranda.poker.view;
 
 import william.miranda.poker.model.Carta;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 public class ViewUtils
 {
 	/* constantes */
@@ -11,6 +13,9 @@ public class ViewUtils
 	/* tamanho da tela */
 	private static int largura;
 	private static int altura;
+	
+	/* SpriteBatch, utilizado para desenhar a tela */
+	public static SpriteBatch batch;
 	
 	public static String getResourceName(Carta carta)
     {

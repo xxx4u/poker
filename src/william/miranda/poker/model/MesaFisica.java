@@ -4,14 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
 /**
  * Container que guarda os jogadores sentados na mesa em suas respectivas posicoes
  * O Vetor que contem os jogadores sempre terá MAX_PLAYERS posicoes e, as posicoes
  * desocupadas serão NULL
  */
-public class MesaFisica implements Desenhavel
+public class MesaFisica
 {
 	public static final int MAX_PLAYERS = 8;
 	
@@ -85,18 +83,4 @@ public class MesaFisica implements Desenhavel
 	{
 		return this.cadeiras;
 	}
-	
-	/* desenha cada jogador */
-	public void desenhar(SpriteBatch batch)
-    {
-		for (int i=0 ; i<cadeiras.size() ; i++)
-		{
-			Jogador jogador = cadeiras.get(i);
-			
-			if (jogador != null)
-			{
-				jogador.desenhar(batch, i);
-			}
-		}
-    }
 }

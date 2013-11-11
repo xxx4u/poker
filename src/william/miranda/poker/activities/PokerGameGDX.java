@@ -2,6 +2,7 @@ package william.miranda.poker.activities;
 
 import william.miranda.poker.controller.PokerInputProcessor;
 import william.miranda.poker.model.PokerGame;
+import william.miranda.poker.view.MasterView;
 import william.miranda.poker.view.ViewUtils;
 
 import com.badlogic.gdx.Game;
@@ -15,6 +16,8 @@ public class PokerGameGDX extends Game
 {
 	OrthographicCamera camera;
 
+	private MasterView masterView;
+	
 	@Override
 	public void create()
 	{
@@ -30,14 +33,20 @@ public class PokerGameGDX extends Game
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, ViewUtils.getLargura(), ViewUtils.getAltura());
 		
-		//inicia as classes do jogo
+		//inicializa o Batch
+		ViewUtils.batch = new SpriteBatch();
+		
+		//inicia as classes do jogo atraves do Singleton PokerGame
 		PokerGame.prepararIniciarRodada();
+		
+		//prepara as views
+		masterView = new MasterView(PokerGame.getInstance());
 	}
 
 	@Override
 	public void dispose()
 	{
-		PokerGame.batch.dispose();
+		ViewUtils.batch.dispose();
 	}
 
 	@Override
@@ -59,14 +68,14 @@ public class PokerGameGDX extends Game
 		
 		//tell the SpriteBatch to render in the
 		//coordinate system specified by the camera.
-		PokerGame.batch.setProjectionMatrix(camera.combined);
+		ViewUtils.batch.setProjectionMatrix(camera.combined);
 		
 		//begin a new batch and draw the bucket and all drops
-		PokerGame.batch.begin();
+		ViewUtils.batch.begin();
 		
-		PokerGame.getInstance().desenhar(PokerGame.batch);
+		masterView.desenhar();
 		
-		PokerGame.batch.end();
+		ViewUtils.batch.end();
 	}
 
 	@Override
