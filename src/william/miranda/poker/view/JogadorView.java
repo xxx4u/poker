@@ -3,7 +3,6 @@ package william.miranda.poker.view;
 import java.util.List;
 
 import william.miranda.poker.model.Carta;
-import william.miranda.poker.model.Desenhavel;
 import william.miranda.poker.model.Jogador;
 
 import com.badlogic.gdx.Gdx;
@@ -43,4 +42,17 @@ public class JogadorView implements Desenhavel
 			batch.draw(t, playerSlot.getX()+80*j , playerSlot.getY());
 		}
     }
+	
+	public void desenharDealerButton()
+	{
+		SpriteBatch batch = ViewUtils.batch;
+		
+		FileHandle fileHandle = Gdx.files.internal(ViewUtils.getDealerButton());
+		Texture t = new Texture(fileHandle);
+		batch.draw(t, playerSlot.getDealerX(), playerSlot.getDealerY());
+	}
+	
+	public Jogador getJogador() {
+		return this.jogador;
+	}
 }

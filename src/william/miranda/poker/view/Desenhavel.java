@@ -1,4 +1,4 @@
-package william.miranda.poker.model;
+package william.miranda.poker.view;
 
 public interface Desenhavel
 {

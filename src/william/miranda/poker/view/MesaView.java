@@ -3,7 +3,6 @@ package william.miranda.poker.view;
 import java.util.List;
 
 import william.miranda.poker.model.Carta;
-import william.miranda.poker.model.Desenhavel;
 import william.miranda.poker.model.Mesa;
 
 import com.badlogic.gdx.Gdx;

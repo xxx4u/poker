@@ -4,13 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import william.miranda.poker.controller.Utils;
-import william.miranda.poker.view.PlayerSlot;
-import william.miranda.poker.view.ViewUtils;
-
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
  * Armazena as informações relevantes de um jogador
@@ -148,4 +141,19 @@ public class Jogador
 	{
 		cartas = null;
 	}
+	
+	@Override
+	public boolean equals(Object o)
+	{
+		if (!(o instanceof Jogador))
+			return false;
+		
+		Jogador j = (Jogador) o;
+		
+		if (j.nome.equals(this.nome))
+			return true;
+		
+		return false;
+	}
 }
+a\

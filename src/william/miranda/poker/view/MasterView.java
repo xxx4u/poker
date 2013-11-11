@@ -3,7 +3,6 @@ package william.miranda.poker.view;
 import java.util.ArrayList;
 import java.util.List;
 
-import william.miranda.poker.model.Desenhavel;
 import william.miranda.poker.model.PokerGame;
 
 /*
@@ -37,11 +36,18 @@ public class MasterView implements Desenhavel
 	
 	public void desenhar()
 	{
+		//desenha a mesa
 		mesaView.desenhar();
 		
+		//desenha cada jogador individualmente
 		for (JogadorView jv : jogadoresView)
 		{
 			jv.desenhar();
+			
+			if (pokerGame.getRodada().getDealer().equals(jv.getJogador()))
+			{
+				jv.desenharDealerButton();
+			}
 		}
 	}
 }
