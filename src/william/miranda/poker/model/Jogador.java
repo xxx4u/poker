@@ -156,4 +156,3 @@ public class Jogador
 		return false;
 	}
 }
-a\

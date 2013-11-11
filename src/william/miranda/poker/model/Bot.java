@@ -3,7 +3,6 @@ package william.miranda.poker.model;
 import java.util.List;
 
 import william.miranda.poker.model.Jogada.TipoJogada;
-import william.miranda.poker.model.Mesa.TurnosMesa;
 
 /*
  * Classe que implementa os Bots.

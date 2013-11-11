@@ -1,23 +1,6 @@
 package william.miranda.poker.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
-import william.miranda.poker.model.Baralho;
-import william.miranda.poker.model.Carta;
-import william.miranda.poker.model.Jogador;
-import william.miranda.poker.model.Mao;
-import william.miranda.poker.model.Mesa;
-import william.miranda.poker.model.Poker;
-import william.miranda.poker.model.PokerGame;
-import william.miranda.poker.model.Rodada;
-
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class PokerInputProcessor implements InputProcessor 
 {

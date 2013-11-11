@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import william.miranda.poker.controller.Utils;
 import william.miranda.poker.model.Carta.Naipe;
 import william.miranda.poker.model.Mao.TipoMao;
 

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.UUID;
 import java.util.Vector;
 
-import william.miranda.poker.model.Carta.Naipe;
 import william.miranda.poker.controller.Utils;
+import william.miranda.poker.model.Carta.Naipe;
 
 public class ClasseTeste
 {

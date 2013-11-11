@@ -1,6 +1,5 @@
 package william.miranda.poker.activities;
 
-import william.miranda.poker.model.PokerGame;
 import android.os.Bundle;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
