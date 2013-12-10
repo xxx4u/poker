@@ -3,7 +3,6 @@ package william.miranda.poker.view;
 import java.util.ArrayList;
 import java.util.List;
 
-import william.miranda.poker.controller.Utils;
 import william.miranda.poker.model.PokerGame;
 
 /*

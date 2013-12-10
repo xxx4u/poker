@@ -2,20 +2,11 @@ package william.miranda.poker.view;
 
 import william.miranda.poker.model.Carta;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
 public class ViewUtils
 {
 	/* constantes */
 	public static final String FOLDER_CARTAS = "cartas/";
 	public static final String FOLDER_FICHAS = "chips/";
-	
-	/* tamanho da tela */
-	private static int largura;
-	private static int altura;
-	
-	/* SpriteBatch, utilizado para desenhar a tela */
-	public static SpriteBatch batch;
 	
 	public static String getResourceName(Carta carta)
     {
@@ -51,27 +42,4 @@ public class ViewUtils
 		return FOLDER_FICHAS + "/dealer1.png";
 	}
 	
-	public static int getLargura() {
-		return largura;
-	}
-	
-	public static void setLargura(int largura)
-	{
-		if (largura > 600)
-			ViewUtils.largura = 600;
-		else
-			ViewUtils.largura = largura;
-	}
-	
-	public static int getAltura() {
-		return altura;
-	}
-	
-	public static void setAltura(int altura)
-	{
-		if (altura > 1000)
-			ViewUtils.altura = 1000;
-		else
-			ViewUtils.altura = altura;
-	}
 }
