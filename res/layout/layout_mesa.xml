@@ -35,4 +35,23 @@
             android:text="@string/check" />
     </LinearLayout>
 
+    <ScrollView
+        android:id="@+id/logView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:minWidth="200dp" >
+
+        <TextView
+            android:id="@+id/logMessage"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="left"
+            android:maxLines="5"
+            android:text="Linha1\nLinha2\nLinha3"
+            android:textSize="12sp" />
+            
+    </ScrollView>
+
 </RelativeLayout>
